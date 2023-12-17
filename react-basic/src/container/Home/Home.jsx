@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from "react";
 import YoutubeComp from "../../component/YoutubeComp/YoutubeComp";
+import Product from "../Product/Product";
 
 class Home extends Component {
   render() {
     return (
       <Fragment>
-        <p>Youtube Component</p>
+        {/* <p>Youtube Component</p>
         <hr />
         <YoutubeComp
           time="23.12"
@@ -27,7 +28,10 @@ class Home extends Component {
           title="belajar dengan alif"
           desc="10x ditonton"
         />
-        <YoutubeComp />
+        <YoutubeComp /> */}
+        <p>Counter</p>
+        <hr />
+        <Product />
       </Fragment>
     );
   }
