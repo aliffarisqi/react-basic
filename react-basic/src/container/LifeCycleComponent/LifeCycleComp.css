@@ -1,0 +1,18 @@
+.btn-lifeCycle{
+    padding: 15px;
+    margin: 5px;
+    font-size: 16px;
+    color: white;
+    background-color: darkblue;
+    border-radius: 5px;
+    border: none;
+}
+.btn-lifeCycle:hover{
+    background-color: blue;
+}
+.section-title{
+    font-size: 24px;
+    margin: 10px;
+    font-weight: bold;
+    color: rgb(88, 88, 88);
+}
