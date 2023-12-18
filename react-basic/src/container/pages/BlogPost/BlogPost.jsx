@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "./BlogPost.css";
-import Post from "../../component/Post/Post";
+import Post from "../../../component/Post/Post";
 import axios from "axios";
 
 class BlogPost extends Component {
