@@ -15,6 +15,11 @@ const Post = (props) => {
             onClick={() => props.remove(props.data.id)}>
             Remove
           </button>
+          <button
+            className="btn btn-update"
+            onClick={() => props.update(props.data)}>
+            Update
+          </button>
         </div>
       </div>
     </Fragment>

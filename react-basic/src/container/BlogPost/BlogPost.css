@@ -63,10 +63,10 @@
 }
 .btn-update {
   color: white;
-  background-color: rgb(248, 203, 4);
+  background-color: rgb(193, 120, 3);
 }
 .btn-update:hover {
-  background-color: rgb(236, 162, 0);
+  background-color: rgb(219, 150, 1);
   cursor: pointer;
 }
 .form-add-post {
