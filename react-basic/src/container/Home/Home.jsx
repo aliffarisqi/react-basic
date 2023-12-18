@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from "react";
-// import YoutubeComp from "../../component/YoutubeComp/YoutubeComp";
-// import Product from "../Product/Product";
-// import LifeCycleComp from "../LifeCycleComponent/LifeCycleComp";
+import YoutubeComp from "../../component/YoutubeComp/YoutubeComp";
+import Product from "../Product/Product";
+import LifeCycleComp from "../LifeCycleComponent/LifeCycleComp";
 import BlogPost from "../BlogPost/BlogPost";
+import "./Home.css";
+import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 
 class Home extends Component {
   state = {
@@ -17,7 +19,7 @@ class Home extends Component {
   }
   render() {
     return (
-      <Fragment>
+      <BrowserRouter>
         {/* <p>Youtube Component</p>
         <hr />
         <YoutubeComp
@@ -40,18 +42,31 @@ class Home extends Component {
           title="belajar dengan alif"
           desc="10x ditonton"
         />
-        <YoutubeComp /> */}
-        {/* <p>Counter</p>
+        <YoutubeComp />
+        <p>Counter</p>
         <hr />
-        <Product /> */}
-        {/* <p>LifeCycle Component</p>
-        <hr />
-        {this.state.showComponent ? <LifeCycleComp /> : null} */}
 
-        <p>Blog Post</p>
-        <hr />
-        <BlogPost />
-      </Fragment>
+        
+        <BlogPost /> */}
+        <div className="nav">
+          <Link to="/" className="link-nav">
+            Blog Post
+          </Link>
+          <Link to="/product" className="link-nav">
+            Productt
+          </Link>
+          <Link to="/lifecycle" className="link-nav">
+            Lifecycle
+          </Link>
+        </div>
+        <div className="home-container">
+          <Routes>
+            <Route path="/" exact Component={BlogPost}></Route>
+            <Route path="/product" Component={Product} />
+            <Route path="/lifecycle" Component={LifeCycleComp} />
+          </Routes>
+        </div>
+      </BrowserRouter>
     );
   }
 }

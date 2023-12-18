@@ -1,0 +1,23 @@
+.home-container {
+  padding: 30px;
+}
+.nav {
+  background-color: rgb(0, 153, 255);
+  padding: 30px;
+}
+.link-nav {
+  text-decoration: none;
+  font-size: 14px;
+  color: rgb(59, 59, 59);
+  font-family: sans-serif;
+  padding: 12px 20px;
+  display: inline;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+}
+.link-nav:hover {
+  background-color: rgb(65, 179, 255);
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+}
