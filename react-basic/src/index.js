@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import Home from "./container/Home/Home";
+import { legacy_createStore } from "redux";
+import { Provider } from "react-redux";
 
 //Stateless component
 // digunakan untuk child di folder component
@@ -21,9 +23,24 @@ class StatefullComponent extends React.Component {
   }
 }
 
+//PEMBUATAN STORE UNTUK REDUX
+const createStore = legacy_createStore;
+//DEFIN STATE AWAL
+const globalState = {
+  totalOrder: 5,
+};
+
+//REDUCER
+const rootReducer = (state = globalState, action) => {
+  return state;
+};
+
+//STORE
+const store = createStore(rootReducer);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <Home />
-  </React.StrictMode>
+  </Provider>
 );
