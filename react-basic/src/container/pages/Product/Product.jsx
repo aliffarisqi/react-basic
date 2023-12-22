@@ -3,17 +3,9 @@ import { IoLogoBitcoin } from "react-icons/io";
 import { SlBasket } from "react-icons/sl";
 import "./Product.css";
 import CardProduct from "./CardProduct/CardProduct";
-import { connect } from "react-redux";
+import { GLobalConsumer } from "../../../context/context";
 
 class Product extends Component {
-  // state = {
-  //   order: 5,
-  // };
-  // handleCountChange = (newValue) => {
-  //   this.setState({
-  //     order: newValue,
-  //   });
-  // };
   render() {
     return (
       <Fragment>
@@ -28,21 +20,14 @@ class Product extends Component {
               <div className="icon">
                 <SlBasket />
               </div>
-              <div className="count">{this.props.order}</div>
+              <div className="count">{this.props.state.totalOrder}</div>
             </div>
           </div>
         </div>
-        <CardProduct
-        // onCounterChange={(value) => this.handleCountChange(value)}
-        />
+        <CardProduct />
       </Fragment>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    order: state.totalOrder,
-  };
-};
-export default connect(mapStateToProps)(Product);
+export default GLobalConsumer(Product);
