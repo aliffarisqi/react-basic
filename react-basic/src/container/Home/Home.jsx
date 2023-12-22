@@ -1,5 +1,5 @@
 // LIBRARIES
-import React, { Component, createContext } from "react";
+import React, { Component, Fragment } from "react";
 import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
 
 //PAGES
@@ -11,35 +11,13 @@ import DetailPost from "../pages/BlogPost/DetailPost/DetailPost";
 
 //STYLING
 import "./Home.css";
-
-//STATE MANAGEMENT
-export const RootContext = createContext();
-const Provider = RootContext.Provider;
+import GlobalProvider from "../../context/context";
 
 class Home extends Component {
-  state = {
-    totalOrder: 5,
-  };
-  dispatch = (action) => {
-    if (action.type === "PLUS_ORDER") {
-      return this.setState({
-        totalOrder: this.state.totalOrder + 1,
-      });
-    }
-    if (action.type === "MINUS_ORDER") {
-      return this.setState({
-        totalOrder: this.state.totalOrder - 1,
-      });
-    }
-  };
   render() {
     return (
       <BrowserRouter>
-        <Provider
-          value={{
-            state: this.state,
-            dispatch: this.dispatch,
-          }}>
+        <Fragment>
           <div className="nav">
             <Link to="/" className="link-nav">
               Blog Post
@@ -63,10 +41,10 @@ class Home extends Component {
               <Route path="/youtube" Component={YoutubePage} />
             </Routes>
           </div>
-        </Provider>
+        </Fragment>
       </BrowserRouter>
     );
   }
 }
 
-export default Home;
+export default GlobalProvider(Home);
