@@ -27,11 +27,30 @@ class StatefullComponent extends React.Component {
 const createStore = legacy_createStore;
 //DEFIN STATE AWAL
 const globalState = {
-  totalOrder: 5,
+  totalOrder: 0,
 };
 
 //REDUCER
 const rootReducer = (state = globalState, action) => {
+  if (action.type === "PLUS_ORDER") {
+    return {
+      ...state,
+      totalOrder: state.totalOrder + 1,
+    };
+  }
+  if (action.type === "MINUS_ORDER") {
+    let totalOrder = 0;
+    if (state.totalOrder > 0) {
+      return {
+        ...state,
+        totalOrder: state.totalOrder - 1,
+      };
+    }
+    return {
+      ...state,
+      totalOrder: totalOrder,
+    };
+  }
   return state;
 };
 
