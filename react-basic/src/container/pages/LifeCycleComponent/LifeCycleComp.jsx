@@ -75,11 +75,6 @@ class LifeCycleComp extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {
-  return {
-    order: state.totalOrder,
-  };
-};
 
 // export default connect(mapStateToProps)(LifeCycleComp);
 export default LifeCycleComp;
