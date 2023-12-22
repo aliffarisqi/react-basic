@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "./LifeCycleComp.css";
-import { connect } from "react-redux";
+import { RootContext } from "../../Home/Home";
 
 class LifeCycleComp extends Component {
   constructor(props) {
@@ -57,15 +57,21 @@ class LifeCycleComp extends Component {
   render() {
     console.log(this.props);
     return (
-      <Fragment>
-        <p>LifeCycle Component</p>
-        <hr />
-        <button onClick={this.changeCount} className="btn-lifeCycle">
-          Component Button {this.state.count}
-        </button>
-        <hr />
-        <p>total order 0</p>
-      </Fragment>
+      <RootContext.Consumer>
+        {(value) => {
+          return (
+            <Fragment>
+              <p>LifeCycle Component</p>
+              <hr />
+              <button onClick={this.changeCount} className="btn-lifeCycle">
+                Component Button {this.state.count}
+              </button>
+              <hr />
+              <p>total order {value.state.totalOrder}</p>
+            </Fragment>
+          );
+        }}
+      </RootContext.Consumer>
     );
   }
 }

@@ -3,39 +3,37 @@ import { IoLogoBitcoin } from "react-icons/io";
 import { SlBasket } from "react-icons/sl";
 import "./Product.css";
 import CardProduct from "./CardProduct/CardProduct";
-import { connect } from "react-redux";
+import { RootContext } from "../../Home/Home";
 
 class Product extends Component {
-  // state = {
-  //   order: 5,
-  // };
-  // handleCountChange = (newValue) => {
-  //   this.setState({
-  //     order: newValue,
-  //   });
-  // };
   render() {
     return (
-      <Fragment>
-        <p>Product</p>
-        <hr />
-        <div className="header">
-          <div className="logo">
-            <div className="logo">
-              <IoLogoBitcoin />
-            </div>
-            <div className="troley">
-              <div className="icon">
-                <SlBasket />
+      <RootContext.Consumer>
+        {(value) => {
+          return (
+            <Fragment>
+              <p>Product</p>
+              <hr />
+              <div className="header">
+                <div className="logo">
+                  <div className="logo">
+                    <IoLogoBitcoin />
+                  </div>
+                  <div className="troley">
+                    <div className="icon">
+                      <SlBasket />
+                    </div>
+                    <div className="count">{value.state.totalOrder}</div>
+                  </div>
+                </div>
               </div>
-              <div className="count">0</div>
-            </div>
-          </div>
-        </div>
-        <CardProduct
-        // onCounterChange={(value) => this.handleCountChange(value)}
-        />
-      </Fragment>
+              <CardProduct
+              // onCounterChange={(value) => this.handleCountChange(value)}
+              />
+            </Fragment>
+          );
+        }}
+      </RootContext.Consumer>
     );
   }
 }
