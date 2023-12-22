@@ -5,6 +5,7 @@ import App from "./App";
 import Home from "./container/Home/Home";
 import { legacy_createStore } from "redux";
 import { Provider } from "react-redux";
+import rootReducer from "./redux/reducer/globalReducer";
 
 //Stateless component
 // digunakan untuk child di folder component
@@ -25,34 +26,6 @@ class StatefullComponent extends React.Component {
 
 //PEMBUATAN STORE UNTUK REDUX
 const createStore = legacy_createStore;
-//DEFIN STATE AWAL
-const globalState = {
-  totalOrder: 0,
-};
-
-//REDUCER
-const rootReducer = (state = globalState, action) => {
-  if (action.type === "PLUS_ORDER") {
-    return {
-      ...state,
-      totalOrder: state.totalOrder + 1,
-    };
-  }
-  if (action.type === "MINUS_ORDER") {
-    let totalOrder = 0;
-    if (state.totalOrder > 0) {
-      return {
-        ...state,
-        totalOrder: state.totalOrder - 1,
-      };
-    }
-    return {
-      ...state,
-      totalOrder: totalOrder,
-    };
-  }
-  return state;
-};
 
 //STORE
 const store = createStore(rootReducer);
