@@ -64,7 +64,7 @@ class LifeCycleComp extends Component {
           Component Button {this.state.count}
         </button>
         <hr />
-        <p>total order {this.props.order}</p>
+        <p>total order 0</p>
       </Fragment>
     );
   }
@@ -75,4 +75,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(LifeCycleComp);
+// export default connect(mapStateToProps)(LifeCycleComp);
+export default LifeCycleComp;

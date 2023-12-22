@@ -28,7 +28,7 @@ class Product extends Component {
               <div className="icon">
                 <SlBasket />
               </div>
-              <div className="count">{this.props.order}</div>
+              <div className="count">0</div>
             </div>
           </div>
         </div>
@@ -45,4 +45,5 @@ const mapStateToProps = (state) => {
     order: state.totalOrder,
   };
 };
-export default connect(mapStateToProps)(Product);
+// export default connect(mapStateToProps)(Product);
+export default Product;
