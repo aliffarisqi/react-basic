@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import "./LifeCycleComp.css";
 import { RootContext } from "../../Home/Home";
+import { GLobalConsumer } from "../../../context/context";
 
 class LifeCycleComp extends Component {
   constructor(props) {
@@ -57,24 +58,36 @@ class LifeCycleComp extends Component {
   render() {
     console.log(this.props);
     return (
-      <RootContext.Consumer>
-        {(value) => {
-          return (
-            <Fragment>
-              <p>LifeCycle Component</p>
-              <hr />
-              <button onClick={this.changeCount} className="btn-lifeCycle">
-                Component Button {this.state.count}
-              </button>
-              <hr />
-              <p>total order {value.state.totalOrder}</p>
-            </Fragment>
-          );
-        }}
-      </RootContext.Consumer>
+      //BEFORE REFACTOR
+      // <RootContext.Consumer>
+      //   {(value) => {
+      //     return (
+      //       <Fragment>
+      //         <p>LifeCycle Component</p>
+      //         <hr />
+      //         <button onClick={this.changeCount} className="btn-lifeCycle">
+      //           Component Button {this.state.count}
+      //         </button>
+      //         <hr />
+      //         <p>total order {value.state.totalOrder}</p>
+      //       </Fragment>
+      //     );
+      //   }}
+      // </RootContext.Consumer>
+
+      //AFTER REFACTOR
+      <Fragment>
+        <p>LifeCycle Component</p>
+        <hr />
+        <button onClick={this.changeCount} className="btn-lifeCycle">
+          Component Button {this.state.count}
+        </button>
+        <hr />
+        <p>total order {this.props.state.totalOrder}</p>
+      </Fragment>
     );
   }
 }
 
 // export default connect(mapStateToProps)(LifeCycleComp);
-export default LifeCycleComp;
+export default GLobalConsumer(LifeCycleComp);

@@ -1,4 +1,4 @@
-import React, { Component, createContext } from "react";
+import React, { Children, Component, createContext } from "react";
 
 //STATE MANAGEMENT
 export const RootContext = createContext();
@@ -41,3 +41,17 @@ export default GlobalProvider;
 
 // HOC high order component
 // CONSUMER
+const Consumer = RootContext.Consumer;
+export const GLobalConsumer = (Children) => {
+  return class ParentConsumer extends Component {
+    render() {
+      return (
+        <Consumer>
+          {(value) => {
+            return <Children {...this.props} {...value} />;
+          }}
+        </Consumer>
+      );
+    }
+  };
+};
