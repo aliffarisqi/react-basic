@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import "./BlogPost.css";
 import Post from "../../../component/Post/Post";
 import axios from "axios";
+import API from "../../../service";
 
 class BlogPost extends Component {
   state = {
@@ -13,15 +14,19 @@ class BlogPost extends Component {
       userId: 1,
     },
     isUpdate: false,
+    comments: [],
   };
   getPostApi = () => {
-    axios
-      .get("http://localhost:3004/posts?_sort=id&_order=desc")
-      .then((result) => {
-        this.setState({
-          post: result.data,
-        });
+    API.getNewsBlog().then((result) => {
+      this.setState({
+        post: result,
       });
+    });
+    API.getComentsBlog().then((result) => {
+      this.setState({
+        comments: result,
+      });
+    });
   };
   handleRemove = (data) => {
     axios.delete(`http://localhost:3004/posts/${data}`).then((result) => {
@@ -134,6 +139,13 @@ class BlogPost extends Component {
             {this.state.isUpdate ? "Update" : "Tambah"}
           </button>
         </div>
+        {this.state.comments.map((coment) => {
+          return (
+            <p className="">
+              {coment.name} - {coment.email}
+            </p>
+          );
+        })}
         {this.state.post.map((post) => {
           return (
             <Post
