@@ -14,11 +14,17 @@ class BlogPost extends Component {
       userId: 1,
     },
     isUpdate: false,
+    comments: [],
   };
   getPostApi = () => {
     API.getNewsBlog().then((result) => {
       this.setState({
         post: result,
+      });
+    });
+    API.getComentsBlog().then((result) => {
+      this.setState({
+        comments: result,
       });
     });
   };
@@ -133,6 +139,13 @@ class BlogPost extends Component {
             {this.state.isUpdate ? "Update" : "Tambah"}
           </button>
         </div>
+        {this.state.comments.map((coment) => {
+          return (
+            <p className="">
+              {coment.name} - {coment.email}
+            </p>
+          );
+        })}
         {this.state.post.map((post) => {
           return (
             <Post

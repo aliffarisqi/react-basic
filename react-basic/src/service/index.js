@@ -1,11 +1,12 @@
 import axios from "axios";
 
 // posts?_sort=id&_order=desc
-const RootPath = "http://localhost:3004";
+const LocalPatch = "http://localhost:3004";
+const OnlineRoot = "https://jsonplaceholder.typicode.com";
 
-const Get = (path) => {
+const Get = (rootPath, path) => {
   const promise = new Promise((resolve, reject) => {
-    axios.get(`${RootPath}/${path}`).then(
+    axios.get(`${rootPath}/${path}`).then(
       (result) => {
         resolve(result.data);
       },
@@ -17,10 +18,12 @@ const Get = (path) => {
   return promise;
 };
 
-const getNewsBlog = () => Get("posts?_sort=id&_order=desc");
+const getNewsBlog = () => Get(LocalPatch, "posts?_sort=id&_order=desc");
+const getComentsBlog = () => Get(OnlineRoot, "comments");
 
 const API = {
   getNewsBlog,
+  getComentsBlog,
 };
 
 export default API;
