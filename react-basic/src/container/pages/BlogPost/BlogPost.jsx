@@ -29,7 +29,7 @@ class BlogPost extends Component {
     });
   };
   handleRemove = (data) => {
-    axios.delete(`http://localhost:3004/posts/${data}`).then((result) => {
+    API.deleteNewsBlog(data).then((res) => {
       this.getPostApi();
     });
   };
@@ -48,23 +48,17 @@ class BlogPost extends Component {
     this.state.isUpdate ? this.putDataToApi() : this.postDataToAPI();
   };
   postDataToAPI = () => {
-    axios.post("http://localhost:3004/posts/", this.state.formBlogPost).then(
-      (result) => {
-        console.log(result);
-        this.getPostApi();
-        this.setState({
-          formBlogPost: {
-            id: 1,
-            title: "",
-            body: "",
-            userId: 1,
-          },
-        });
-      },
-      (err) => {
-        console.log("err", err);
-      }
-    );
+    API.postNewsBlog(this.state.formBlogPost).then((res) => {
+      this.getPostApi();
+      this.setState({
+        formBlogPost: {
+          id: 1,
+          title: "",
+          body: "",
+          userId: 1,
+        },
+      });
+    });
   };
   componentDidMount() {
     // menggunakan fetch
@@ -85,24 +79,21 @@ class BlogPost extends Component {
     });
   };
   putDataToApi = () => {
-    axios
-      .put(
-        `http://localhost:3004/posts/${this.state.formBlogPost.id}`,
-        this.state.formBlogPost
-      )
-      .then((res) => {
-        console.log(res);
-        this.getPostApi();
-        this.setState({
-          isUpdate: false,
-          formBlogPost: {
-            id: 1,
-            title: "",
-            body: "",
-            userId: 1,
-          },
-        });
+    API.updateNewsBlog(
+      this.state.formBlogPost,
+      this.state.formBlogPost.id
+    ).then((res) => {
+      this.getPostApi();
+      this.setState({
+        isUpdate: false,
+        formBlogPost: {
+          id: 1,
+          title: "",
+          body: "",
+          userId: 1,
+        },
       });
+    });
   };
 
   render() {
@@ -139,13 +130,7 @@ class BlogPost extends Component {
             {this.state.isUpdate ? "Update" : "Tambah"}
           </button>
         </div>
-        {this.state.comments.map((coment) => {
-          return (
-            <p className="">
-              {coment.name} - {coment.email}
-            </p>
-          );
-        })}
+
         {this.state.post.map((post) => {
           return (
             <Post
@@ -154,6 +139,13 @@ class BlogPost extends Component {
               remove={this.handleRemove}
               update={this.handleUpdate}
             />
+          );
+        })}
+        {this.state.comments.map((coment) => {
+          return (
+            <p className="">
+              {coment.name} - {coment.email}
+            </p>
           );
         })}
       </Fragment>
