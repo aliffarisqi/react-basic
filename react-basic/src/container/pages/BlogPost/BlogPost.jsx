@@ -29,7 +29,7 @@ class BlogPost extends Component {
     });
   };
   handleRemove = (data) => {
-    axios.delete(`http://localhost:3004/posts/${data}`).then((result) => {
+    API.deleteNewsBlog(data).then((res) => {
       this.getPostApi();
     });
   };
