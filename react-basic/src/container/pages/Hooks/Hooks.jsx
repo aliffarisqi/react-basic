@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import "./Hooks.css";
 
 // menggunakan class component dan state
@@ -11,6 +11,15 @@ import "./Hooks.css";
 //       count: this.state.count + 1,
 //     });
 //   };
+//   componentDidMount() {
+//     document.title = `title Change: ${this.state.count}`;
+//   }
+//   componentDidUpdate() {
+//     document.title = `title Change: ${this.state.count}`;
+//   }
+//   componentWillUnmount() {
+//     document.title = `React Js Hello World`;
+//   }
 //   render() {
 //     return (
 //       <div className="p-hooks">
@@ -21,9 +30,19 @@ import "./Hooks.css";
 //   }
 // }
 
-//menggunakan hooks dan functional component
+// menggunakan hooks dan functional component
 const HooksComponent = () => {
   const [count, setCount] = useState(7);
+
+  //useEffect pada react hooks adalah lifecycle dari react yang memiliki kemampuan sama seperti didUpdate, didMount, willUnMount
+  useEffect(() => {
+    document.title = `title change : ${count}`;
+
+    //menggunakan willUnMount
+    return () => {
+      document.title = "React Js Hello World";
+    };
+  });
   return (
     <div className="p-hooks">
       <p>Nilai saat ini adalahh : {count}</p>
