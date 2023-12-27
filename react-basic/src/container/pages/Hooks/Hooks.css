@@ -1,0 +1,21 @@
+.p-hooks {
+  padding: 20px;
+  background-color: aliceblue;
+  border-radius: 5px;
+  border: 1px solid grey;
+  margin: 20px;
+}
+.p-hooks button {
+  padding: 12px 20px;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  background-color: rgb(3, 170, 100);
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  outline: none;
+}
+.p-hooks button:hover {
+  background-color: aquamarine;
+  color: rgb(255, 255, 255);
+}
