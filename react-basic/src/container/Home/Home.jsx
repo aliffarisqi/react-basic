@@ -12,6 +12,7 @@ import DetailPost from "../pages/BlogPost/DetailPost/DetailPost";
 //STYLING
 import "./Home.css";
 import GlobalProvider from "../../context/context";
+import HooksComponent from "../pages/Hooks/Hooks";
 
 class Home extends Component {
   render() {
@@ -31,6 +32,9 @@ class Home extends Component {
             <Link to="/youtube" className="link-nav">
               Youtube
             </Link>
+            <Link to="/hooks" className="link-nav">
+              Hooks
+            </Link>
           </div>
           <div className="home-container">
             <Routes>
@@ -39,6 +43,7 @@ class Home extends Component {
               <Route path="/product" Component={Product} />
               <Route path="/lifecycle" Component={LifeCycleComp} />
               <Route path="/youtube" Component={YoutubePage} />
+              <Route path="/hooks" Component={HooksComponent} />
             </Routes>
           </div>
         </Fragment>
